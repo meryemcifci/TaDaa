@@ -22,4 +22,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TaDaa.EntityLayer\TaDaa.EntityLayer.csproj" />
+  </ItemGroup>
+
 </Project>

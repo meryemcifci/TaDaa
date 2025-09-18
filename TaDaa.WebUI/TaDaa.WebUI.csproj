@@ -22,4 +22,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TaDaa.BusinessLayer\TaDaa.BusinessLayer.csproj" />
+    <ProjectReference Include="..\TaDaa.DataAccessLayer\TaDaa.DataAccessLayer.csproj" />
+    <ProjectReference Include="..\TaDaa.EntityLayer\TaDaa.EntityLayer.csproj" />
+  </ItemGroup>
+
 </Project>

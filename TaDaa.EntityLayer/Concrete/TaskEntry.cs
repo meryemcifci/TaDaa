@@ -27,11 +27,7 @@ namespace TaDaa.EntityLayer.Concrete
 
         [MaxLength(255)] 
         public string MoodNote { get; set; }
-        
-        [ForeignKey("DailySummary")]
-        public int DailySummaryId { get; set; }
-        public DailySummary DailySummary { get; set; }
-
+       
         [ForeignKey("User")]
         public int UserId { get; set; }
         public AppUser User { get; set; }
