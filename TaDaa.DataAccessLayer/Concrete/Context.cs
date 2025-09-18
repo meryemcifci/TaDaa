@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using TaDaa.EntityLayer.Concrete;
 
 namespace TaDaa.DataAccessLayer.Concrete
 {
-    public class Context : IdentityDbContext<AppUser, AppRole, int>
+    public class Context : IdentityDbContext<AppUser, IdentityRole<int>, int>
     {
         public Context(DbContextOptions<Context> options) : base(options)
         {

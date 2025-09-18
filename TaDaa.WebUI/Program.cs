@@ -1,5 +1,8 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System;
 using TaDaa.DataAccessLayer.Concrete;
+using TaDaa.EntityLayer.Concrete;
 
 namespace TaDaa.WebUI
 {
@@ -13,8 +16,21 @@ namespace TaDaa.WebUI
             builder.Services.AddDbContext<Context>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+            builder.Services.AddIdentity<AppUser, IdentityRole<int>>(options =>
+            {
+                options.Password.RequireDigit = true;
+                options.Password.RequiredLength = 6;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireLowercase = false;
+            })
+             .AddEntityFrameworkStores<Context>()
+             .AddDefaultTokenProviders();
+
+
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
 
             var app = builder.Build();
 

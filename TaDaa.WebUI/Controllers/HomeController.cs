@@ -18,7 +18,7 @@ namespace TaDaa.WebUI.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult HomePage()
         {
             return View();
         }
