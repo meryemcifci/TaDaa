@@ -19,6 +19,28 @@ namespace TaDaa.DataAccessLayer.Concrete
         public DbSet<TaskEntry> TaskEntry { get; set; }
         public DbSet<DailyEmoji> DailyEmoji { get; set; }
 
+        //protected override void OnModelCreating(ModelBuilder builder)
+        //{
+        //    base.OnModelCreating(builder);
+
+           
+        //    builder.Entity<TaskEntry>(entity =>
+        //    {
+               
+        //        entity.HasOne(e => e.User)
+        //              .WithMany()
+        //              .HasForeignKey(e => e.UserId)
+        //              .OnDelete(DeleteBehavior.Cascade);
+        //    });
+
+        //    builder.Entity<DailyEmoji>(entity =>
+        //    {
+        //        entity.HasOne(e => e.User)
+        //              .WithMany()
+        //              .HasForeignKey(e => e.UserId)
+        //              .OnDelete(DeleteBehavior.Cascade);
+        //    });
+        //}
 
     }
 }

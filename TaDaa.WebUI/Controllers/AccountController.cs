@@ -29,7 +29,7 @@ namespace TaDaa.WebUI.Controllers
 
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("HomePage", "Home");
+                    return RedirectToAction("Index", "Task");
                 }
                 else
                 {

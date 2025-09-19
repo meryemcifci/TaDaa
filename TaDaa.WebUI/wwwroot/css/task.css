@@ -1,0 +1,111 @@
+﻿.task-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Yeni Rating Input Stili */
+.rating-input {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 5px;
+}
+
+.rating-input input[type="radio"] {
+    display: none;
+}
+
+.rating-input label {
+    cursor: pointer;
+    font-size: 2rem;
+    color: #ddd;
+    transition: color 0.2s;
+}
+
+.rating-input input[type="radio"]:checked ~ label,
+.rating-input label:hover,
+.rating-input label:hover ~ label {
+    color: #ffc107;
+}
+
+/* Rating Display Stili */
+.stars-display .star-display {
+    font-size: 1.2rem;
+    color: #ddd;
+    margin-right: 2px;
+}
+
+.stars-display .star-display.filled {
+    color: #ffc107;
+}
+
+/* Mood Quick Select */
+.mood-quick-select {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.mood-quick {
+    border-radius: 20px !important;
+    font-size: 12px;
+    padding: 4px 12px;
+}
+
+.mood-quick.selected {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+.emoji-btn {
+    background: white;
+    border: 3px solid transparent;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    font-size: 2.5rem;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.emoji-btn:hover {
+    transform: scale(1.1);
+    border-color: #667eea;
+}
+
+.emoji-btn.selected {
+    border-color: #667eea;
+    background: #f8f9ff;
+    transform: scale(1.1);
+}
+
+.mood-options .mood-option {
+    margin: 5px;
+    border-radius: 20px;
+}
+
+.mood-options .mood-option.selected {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .rating-input label {
+        font-size: 1.5rem;
+    }
+
+    .emoji-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 2rem;
+        margin: 0 5px;
+    }
+
+    .mood-quick-select {
+        justify-content: center;
+    }
+}
