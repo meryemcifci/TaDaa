@@ -1,0 +1,64 @@
+﻿@using TaDaa.WebUI.ViewModels;
+@model UpdatePasswordViewModel;
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <div class="text-center mb-5" style="background: linear-gradient(135deg, #F2C3D0 0%, #E999AF 100%); padding: 40px; border-radius: 20px; color: white;">
+                <h1 class="display-4 font-weight-bold mb-3">Hesap Bilgileri</h1>
+                <div class="email p-3" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); border-radius: 12px; border-left: 4px solid #F6c320;">
+                    <em style="color: #495057;">@User.Identity.Name</em>
+                </div>
+                <p class="information"><i class="fa fa-clay"></i>Email Adresi(Değiştirilemez)</p>
+            </div>
+
+            <div class="card shadow-lg mb-4" style="border-radius: 15px; border: none; padding: 30px;">
+                <h4 class="fw-bold text-center mb-4">Şifre Güncelleme</h4>
+               @*  @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+                } *@
+                <form asp-action="Index" method="post">
+                   
+                    <div class="mb-3">
+                        <label asp-for="Password" class="form-label"></label>
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="NewPassword" class="form-label"></label>
+                        <input asp-for="NewPassword" class="form-control" />
+                        <span asp-validation-for="NewPassword" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="ConfirmNewPassword" class="form-label"></label>
+                        <input asp-for="ConfirmNewPassword" class="form-control" />
+                        <span asp-validation-for="ConfirmNewPassword" class="text-danger"></span>
+                    </div>
+
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Şifreyi Güncelle</button>
+                    </div>
+                </form>
+                <!-- Açıklama yazısı -->
+                <p class="text-muted small text-center mt-3">
+                    Güvenliğiniz için, şifrenizi güncelledikten sonra e-posta adresinize bir onay gönderilecektir.
+                </p>
+                @if (ViewBag.SuccessMessage != null)
+                {
+                    <div class="alert alert-success">@ViewBag.SuccessMessage</div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+

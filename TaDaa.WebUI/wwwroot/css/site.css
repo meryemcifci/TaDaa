@@ -31,3 +31,20 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+.user-btn {
+    background-color: transparent !important; 
+    border: none !important; 
+    color: #333; 
+}
+
+.user-btn:focus,
+.user-btn:active {
+    box-shadow: none !important; 
+}
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus,
+.dropdown-menu .dropdown-item.active {
+    background-color: #F6D8E0 !important; 
+    color: #000 !important; 
+}

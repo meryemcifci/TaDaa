@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/TaDaa.WebUI.styles.css" asp-append-version="true" /> 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -29,10 +31,22 @@
                         <li class="nav-item">
                             <a class="nav-link fw-medium" href="#">Geçmiş TaDaalarım</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link fw-medium" href="#">Profilim</a>@* Tıklamalı user burası Profil,Ayarlar,Hesabım*@
-                        </li>
                     </ul>
+                    <div class="dropdown show">
+                        <a class="btn user-btn dropdown-toggle" href="#" role="button"
+                           id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                           @*  data-bs-toggle="dropdown" bootstrap 5 için kullanılır. *@
+                            <i class="fas fa-user"></i>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" asp-area="" asp-controller="Profile" asp-action="Index">Hesabım</a>
+                            <a class="dropdown-item" asp-area="" asp-controller="Profile" asp-action="Settings">Ayarlar</a>
+                            <hr />
+                            <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Index">Çıkış Yap</a>
+                        </div>
+                       
+
+                    </div>
                 </div>
             </div>
         </nav>
@@ -42,3 +56,4 @@
     </div>
 </body>
 </html>
+
