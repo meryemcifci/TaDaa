@@ -1,8 +1,116 @@
-﻿
+﻿@using TaDaa.WebUI.ViewModels;
+@model SettingsViewModel
+
+<script src="~/js/settings.js"></script>
 @{
     ViewData["Title"] = "Settings";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
-<h1>Settings</h1>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+<div class="container mt-4">
+    <h2 class="mb-4">Ayarlar</h2>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <form asp-action="UpdateSettings" method="post">
+                <div class="mb-3">
+                    <label class="form-label">Günlük Hatırlatıcı</label>
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="reminderToggle" />
+                        <label class="form-check-label" for="reminderToggle">Hatırlatıcıyı Aç</label>
+                    </div>
+                </div>
+
+                <div id="reminderTimeDiv" class="mb-3">
+                    <label class="form-label">Hatırlatma Saati</label>
+                    <input type="time" asp-for="ReminderTime" class="form-control form-control-sm" />
+                </div>
+
+                <button type="submit" class="btn btn-primary">Kaydet</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-body">
+            <form asp-controller="Profile" asp-action="DownloadPdf" method="get"
+                  onsubmit="return confirm('Verilerinizi indirmek istiyor musunuz?');">
+                <button type="submit" class="btn btn-warning w-100 mb-2">📥 Verilerimi indir</button>
+            </form>
+
+            <form asp-action="DeleteAccount" method="post"
+                  onsubmit="return confirm('Hesabınızı silmek istediğinize emin misiniz? Bu işlem geri alınamaz.');">
+                <button type="submit" class="btn btn-danger w-100">❌ Hesabı Sil</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        const toggle = document.getElementById("reminderToggle");
+        const reminderDiv = document.getElementById("reminderTimeDiv");
+        const reminderInput = document.querySelector("input[name='ReminderTime']");
+
+        if (reminderInput.value) {
+            toggle.checked = true;
+            reminderDiv.style.display = "block";
+            reminderInput.disabled = false;
+        } else {
+            toggle.checked = false;
+            reminderDiv.style.display = "none";
+            reminderInput.disabled = true;
+        }
+
+        toggle.addEventListener("change", function () {
+            if (this.checked) {
+                reminderDiv.style.display = "block";
+                reminderInput.disabled = false;
+            } else {
+                reminderDiv.style.display = "none";
+                reminderInput.value = "";
+                reminderInput.disabled = true;
+            }
+        });
+
+        @if (TempData["Success"] != null)
+        {
+          <text>
+              const swalWithBootstrapButtons = Swal.mixin({
+              customClass: {
+                confirmButton: "btn btn-success",
+                cancelButton: "btn btn-danger"
+              },
+              buttonsStyling: false
+            });
+            swalWithBootstrapButtons.fire({
+              title: "Emin misin?",
+              text: "Bu işlemi geri alamazsınız!",
+              icon: "warning",
+              showCancelButton: true,
+              confirmButtonText: "Evet, silin!",
+              cancelButtonText: "Hayır, silmeyin!",
+              reverseButtons: true
+            }).then((result) => {
+              if (result.isConfirmed) {
+                swalWithBootstrapButtons.fire({
+                  title: "Silindi!",
+                  text: "Dosyanız silindi.",
+                  icon: "success"
+                });
+              } else if (
+                result.dismiss === Swal.DismissReason.cancel
+              ) {
+                swalWithBootstrapButtons.fire({
+                  title: "İptal edildi",
+                  text: "Hayali dosyanız güvende :)",
+                  icon: "error"
+                });
+              }
+            });
+          </text>
+        }
+    </script>
+}

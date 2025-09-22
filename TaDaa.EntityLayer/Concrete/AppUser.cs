@@ -9,6 +9,9 @@ namespace TaDaa.EntityLayer.Concrete
 {
     public class AppUser:IdentityUser<int>
     {
+
+        public TimeSpan? ReminderTime { get; set; }
+
         public ICollection<TaskEntry> TaskEntries { get; set; }
         public ICollection<DailyEmoji> DailyEmojis { get; set; }
     }
