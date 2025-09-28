@@ -1,0 +1,180 @@
+﻿
+@{
+    ViewData["Title"] = "About";
+}
+
+<script src="~/js/about.js"></script>
+<link rel="stylesheet" href="~/css/about.css" asp-append-version="true" />
+
+<div class="about-wrapper">
+    @* Hero Bölümü  *@
+    <div class="hero-about">
+        <h1>Başarılarınızı Kutlamanın Yeni Yolu</h1>
+        <p>TaDaa ile tanışın - her gün küçük zaferlerinizi kaydetmenin ve kutlamanın gücünü keşfedin.</p>
+    </div>
+
+    @* Ana İçerik *@
+    <div class="main-content">
+
+        @*  Hikayemiz *@
+        <h2 class="section-heading">Hikayemiz</h2>
+        <div class="story-cards">
+            <div class="story-card">
+                <h3>TaDaa Nasıl Doğdu?</h3>
+                <p>
+                    Her şey <span class="highlight-text">@@magentally</span> adlı Instagram hesabında gördüğüm bir reels ile başladı.@* Bu hasaba erişen link ekleyebilirim belki *@
+                    "Ta-Da" listesi konsepti o kadar etkileyici geldi ki, daha derinlemesine araştırmaya karar verdim.
+                </p>
+            </div>
+
+            <div class="story-card">
+                <h3>Peki Bunu Neden Yapıyoruz?</h3>
+                <p>
+                    <strong>Yapılacaklar listesi</strong> bizde stres uyandırabilecek ve henüz yapılmadığı için eksiklik hissettiğimiz
+                    bir liste olabilir. Fakat <strong>Ta-Da listesi</strong> bunun tam tersidir. Bizde olumlu bir etki uyandırır ve
+                    başardıklarımız için kendimize teşekkür etme zamanı tanımamızı sağlar.
+                </p>
+                <p>
+                    Bunu kendimiz yapıyor olsak bile, yaptığımız şeyleri gözden geçirmek aynı zamanda övgüye layık olduğumuzu
+                    göstermek demektir. Hiçbir şey yapmadığınızı düşündüğünüz bir gün içinde bile pek çok şeyi başardığınızı
+                    kendinize göstermeniz, uzun vadede duygusal zeka gelişiminize de katkı sağlayacaktır.
+                </p>
+            </div>
+
+            <div class="story-card">
+                <h3>Bilimsel Temeli Var mı?</h3>
+                <p>
+                    Araştırmalarımızda Forbes dahil pek çok kaynakta bu yaklaşımın etkinliğinin doğrulandığını gördük.
+                    To-Do listelerinin aksine Ta-Da listeleri, başarılarımızı kutlamamızı ve kendimizi takdir etmemizi sağlıyor.
+                </p>
+                <div class="quote-highlight">
+                    Dürüst olmak gerekirse, hepimiz biraz da olsa övgüyü hak ediyoruz ve bunu bizim için en iyi yine biz yapabiliriz.
+                </div>
+            </div>
+        </div>
+
+        @* Misyon & Vizyon  *@
+        <h2 class="section-heading">Misyon & Vizyon</h2>
+        <div class="mission-vision">
+            <div class="mv-card mission">
+                <div class="mv-icon">🎯</div>
+                <h3>Misyonumuz</h3>
+                <p>
+                    İnsanların günlük başarılarını fark etmelerini, kaydetmelerini ve kutlamalarını sağlayarak
+                    daha motive ve mutlu bir yaşam sürmelerine yardımcı olmak.
+                </p>
+            </div>
+
+            <div class="mv-card vision">
+                <div class="mv-icon">🌟</div>
+                <h3>Vizyonumuz</h3>
+                <p>
+                    Dünyadaki her bireyin küçük başarılarını değerli gördüğü ve düzenli olarak kutladığı
+                    bir kültür yaratmak.
+                </p>
+            </div>
+        </div>
+
+        @* Değerlerimiz *@
+        <div class="values-section">
+            <h2 class="section-heading" style="color: #bf2a52;">Değerlerimiz</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <span class="emoji">🎯</span>
+                    <h4>Pozitiflik</h4>
+                    <p>Her başarının değerli olduğuna inanıyor, pozitif yaklaşımı destekliyoruz.</p>
+                </div>
+
+                <div class="value-card">
+                    <span class="emoji">🤝</span>
+                    <h4>Kapsayıcılık</h4>
+                    <p>Büyük küçük, her türlü başarının eşit değerde olduğunu kabul ediyoruz.</p>
+                </div>
+
+                <div class="value-card">
+                    <span class="emoji">💡</span>
+                    <h4>Sadelik</h4>
+                    <p>Karmaşık değil, basit ve anlaşılır çözümler sunuyoruz.</p>
+                </div>
+
+                <div class="value-card">
+                    <span class="emoji">📈</span>
+                    <h4>Gelişim</h4>
+                    <p>Sürekli öğrenmeyi ve kendini geliştirmeyi destekliyoruz.</p>
+                </div>
+
+                <div class="value-card">
+                    <span class="emoji">🎉</span>
+                    <h4>Kutlama</h4>
+                    <p>Başarıları kutlamanın motivasyonu artırdığına inanıyoruz.</p>
+                </div>
+            </div>
+        </div>
+
+        @* Bilimsel Yaklaşım  *@
+        <div class="scientific-approach">
+            <h2 class="section-heading">Bilimsel Yaklaşımımız</h2>
+
+            <h3 style="color: #bf2a52; margin-bottom: 1rem;">🧠 Pozitif Psikoloji Temeli</h3>
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;">
+                Ta-Da listeleri, pozitif psikolojinin temellerinden biri olan "başarıları fark etme ve kutlama" prensibine dayanır. Bu yaklaşım:
+            </p>
+
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <strong>Duygusal Zeka</strong>
+                    <span>Gelişimini destekler</span>
+                </div>
+                <div class="benefit-item">
+                    <strong>Öz-Takdir</strong>
+                    <span>Becerisini güçlendirir</span>
+                </div>
+                <div class="benefit-item">
+                    <strong>Stres Seviyesi</strong>
+                    <span>Düşürür</span>
+                </div>
+                <div class="benefit-item">
+                    <strong>Motivasyon</strong>
+                    <span>Artırır</span>
+                </div>
+            </div>
+
+            <div class="sources">
+                <h4 style="color: #bf2a52; margin-bottom: 1rem;">📚 Kaynaklarımız</h4>
+                <ul>
+                    <li>Forbes: "Turn Your To-Do List Into A Ta-Da List"</li>
+                    <li>Pozitif psikoloji araştırmaları</li>
+                    <li>Duygusal zeka geliştirme çalışmaları</li>
+                    <li>Motivasyon ve başarı psikolojisi literatürü</li>
+                </ul>
+            </div>
+
+            <div class="quote-highlight">
+                Hiçbir şey yapmadığını düşündüğün bir günde bile, aslında pek çok şeyi başarmışsındır.
+                Bunları görmek ve kutlamak, hem bugünkü hem de yarınki mutluluğun için önemlidir.
+            </div>
+        </div>
+
+        @*  İlham ve Çağrı  *@
+        <div class="inspiration">
+            <h3>İlham Kaynağımız</h3>
+            <p>
+                Bu projenin ilk kıvılcımı @@magentally Instagram hesabında gördüğüm bir reels oldu.
+                O an anladım ki To-Do listelerinin yarattığı stres ve eksiklik hissinin tam tersi bir yaklaşıma ihtiyaç var.
+            </p>
+
+            <div class="cta-section">
+                <h4 style="margin-bottom: 1rem;">Çağrımız</h4>
+                <p style="margin-bottom: 1.5rem;">
+                    Sizler de To-Do gibi Ta-Da listelerinizi gün sonunda hazırlayarak yaptıklarınızı kutlayın.
+                    Çünkü her birimiz, her gün, biraz da olsa övgüyü hak ediyoruz ve bunu bizim için en iyi yine biz yapabiliriz.
+                </p>
+                <a class="cta-tn" asp-area="" asp-controller="Account" asp-action="Login">TaDaa ile Başarılarınızı Kaydedin!</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+ 
