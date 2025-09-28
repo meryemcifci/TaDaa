@@ -35,26 +35,37 @@ $(document).ready(function() {
         });
     });
 
-    // Görev silme
-    $('.delete-btn').click(function() {
-        const taskId = $(this).data('task-id');
+    
+    $(document).on('click', '.delete-btn', function () {
+        const button = $(this);                
+        const taskId = button.data('task-id'); 
+
         if (confirm('Bu başarını silmek istediğinizden emin misiniz?')) {
-            $.post('@Url.Action("DeleteTask")', {
-                taskId: taskId
-            }, function(response) {
-                if (response.success) {
-                    showSuccessMessage('Başarı silindi!');
-                    setTimeout(function() {
-                        location.reload();
-                    }, 1000);
-                } else {
-                    alert('Silme işlemi başarısız: ' + response.message);
+            $.ajax({
+                url: '/Task/DeleteTask', 
+                type: 'POST',
+                data: {
+                    taskId: taskId,
+                    __RequestVerificationToken: $('input[name="__RequestVerificationToken"]').val()
+                },
+                success: function (response) {
+                    if (response.success) {
+                        showSuccessMessage('Başarılı silindi!');
+
+                        button.closest('.task-row').fadeOut(500, function () {
+                            $(this).remove();
+                        });
+                    } else {
+                        alert('Silme işlemi başarısız: ' + response.message);
+                    }
+                },
+                error: function () {
+                    alert('Bir hata oluştu. Lütfen tekrar deneyin.');
                 }
-            }).fail(function() {
-                alert('Bir hata oluştu. Lütfen tekrar deneyin.');
             });
         }
     });
+
 
     // Form submit validation
     $('#taskForm').submit(function(e) {

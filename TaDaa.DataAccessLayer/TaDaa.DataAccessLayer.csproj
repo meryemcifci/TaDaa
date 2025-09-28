@@ -23,7 +23,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TaDaa.CoreLayer\TaDaa.CoreLayer.csproj" />
     <ProjectReference Include="..\TaDaa.EntityLayer\TaDaa.EntityLayer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Abstract\" />
+    <Folder Include="Concrete\EntityFramework\" />
+    <Folder Include="Repository\" />
   </ItemGroup>
 
 </Project>

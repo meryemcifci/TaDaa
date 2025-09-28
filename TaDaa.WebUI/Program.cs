@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
-using TaDaa.DataAccessLayer.Concrete;
+using TaDaa.DataAccessLayer.Concrete.Context;
 using TaDaa.EntityLayer.Concrete;
 
 namespace TaDaa.WebUI

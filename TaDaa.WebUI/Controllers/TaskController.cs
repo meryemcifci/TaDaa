@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using TaDaa.DataAccessLayer.Concrete;
+using TaDaa.DataAccessLayer.Concrete.Context;
 using TaDaa.EntityLayer.Concrete;
 
 namespace TaDaa.WebUI.Controllers
@@ -69,7 +69,7 @@ namespace TaDaa.WebUI.Controllers
                 Date = DateTime.Today,
                 Rating = Rating,
                 MoodNote = MoodNote?.Trim() ?? "",
-                UserId = user.Id, // AppUser'ınızın Id tipine göre string veya int
+                UserId = user.Id, 
                 CreatedAt = DateTime.Now,
                 IsDeleted = false
             };
@@ -194,7 +194,7 @@ namespace TaDaa.WebUI.Controllers
                 return Json(new { success = false, message = "Görev bulunamadı" });
             }
 
-
+            _context.TaskEntry.Remove(task); 
             await _context.SaveChangesAsync();
 
             return Json(new { success = true });
