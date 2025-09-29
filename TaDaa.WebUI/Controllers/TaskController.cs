@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using TaDaa.BusinessLayer.NewFolder;
 using TaDaa.DataAccessLayer.Concrete.Context;
 using TaDaa.EntityLayer.Concrete;
 
@@ -145,36 +146,18 @@ namespace TaDaa.WebUI.Controllers
         public async Task<IActionResult> SetDailyEmoji(string emoji)
         {
             var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                return Json(new { success = false, message = "Kullanıcı bulunamadı" });
-            }
+            if (user == null) return Json(new { success = false, message = "Kullanıcı bulunamadı" });
+            if (string.IsNullOrEmpty(emoji)) return Json(new { success = false, message = "Emoji boş geldi" });
 
-            // Bugünkü emoji var mı kontrol et
+            var today = DateTime.Today;
             var existingEmoji = await _context.DailyEmoji
-                .FirstOrDefaultAsync(e => e.UserId == user.Id && e.CreatedAt.Date == DateTime.Today);
+                .FirstOrDefaultAsync(e => e.UserId == user.Id && e.CreatedAt.Date == today);
 
-            if (existingEmoji != null)
-            {
-                // Mevcut emoji'yi güncelle
-                existingEmoji.Emoji = emoji;
-            }
-            else
-            {
-                // Yeni emoji ekle
-                var dailyEmoji = new DailyEmoji
-                {
-                    Emoji = emoji,
-                    UserId = user.Id,
-                    CreatedAt = DateTime.Now,
-                    IsDeleted = false
-                };
-                _context.DailyEmoji.Add(dailyEmoji);
-            }
+            if (existingEmoji != null) existingEmoji.Emoji = emoji;
+            else _context.DailyEmoji.Add(new DailyEmoji { Emoji = emoji, UserId = user.Id, CreatedAt = DateTime.Now, IsDeleted = false });
 
             await _context.SaveChangesAsync();
-
-            return Json(new { success = true });
+            return Json(new { success = true, message = "Emoji kaydedildi!" });
         }
 
         [HttpPost]

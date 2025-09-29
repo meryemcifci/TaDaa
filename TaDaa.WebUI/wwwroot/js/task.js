@@ -14,27 +14,48 @@ $(document).ready(function() {
         }
     });
 
-    // Emoji seçimi
-    $('.emoji-btn').click(function() {
-        const emoji = $(this).data('emoji');
-        $('.emoji-btn').removeClass('selected');
-        $(this).addClass('selected');
-        
-        $.post('@Url.Action("SetDailyEmoji")', {
-            emoji: emoji
-        }, function(response) {
-            if (response.success) {
-                $('.selected-emoji').html(`<h5>Bugün seçilen emoji: <span style="font-size: 2rem;">${emoji}</span></h5>`);
-                // Success mesajı göster
-                showSuccessMessage('Günün emojisi kaydedildi! 🎉');
-            } else {
-                alert('Emoji kaydedilemedi: ' + response.message);
-            }
-        }).fail(function() {
-            alert('Bir hata oluştu. Lütfen tekrar deneyin.');
+    let selectedEmoji = null;
+
+    // Emoji seçildiğinde highlight et
+    document.querySelectorAll(".emoji-btn").forEach(btn => {
+        btn.addEventListener("click", function () {
+            selectedEmoji = this.dataset.emoji;
+
+            document.querySelectorAll(".emoji-btn").forEach(b => b.classList.remove("active"));
+            this.classList.add("active");
         });
     });
 
+    // Kaydet butonuna basıldığında
+    document.getElementById("saveEmojiBtn").addEventListener("click", function () {
+        if (!selectedEmoji) {
+            alert("Lütfen bir emoji seçin!");
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("emoji", selectedEmoji);
+
+        fetch('/Task/SetDailyEmoji', {
+            method: "POST",
+            body: formData
+        })
+
+
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                alert(data.message);
+                location.reload();
+            } else {
+                alert(data.message || "Bir hata oluştu.");
+            }
+        })
+        .catch(err => {
+            console.error("Hata:", err);
+            alert("Sunucuya bağlanırken hata oluştu.");
+        });
+    });
     
     $(document).on('click', '.delete-btn', function () {
         const button = $(this);                
@@ -108,10 +129,5 @@ $(document).ready(function() {
         }, 3000);
     }
 
-    // Sayfa yüklendiğinde bugünün emojisini işaretle
-    const todayEmoji = '@ViewBag.TodayEmoji';
-    if (todayEmoji) {
-        $(`.emoji-btn[data-emoji="${todayEmoji}"]`).addClass('selected');
-    }
 });
 
