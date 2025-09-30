@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<script src="~/js/pastTaDaa.js"></script>
+<link rel="stylesheet" href="~/css/pastTaDaa.css" asp-append-version="true" />
+
+
+<div class="past-tadaa-container">
+    <div class="header">
+        <button class="btn-today" onclick="goToToday()">Bugün</button>
+        <h1>Geçmiş TaDaa'larım</h1>
+        <p>
+            Bu sayfada, geçmiş günlerdeki başarılarınızı ve duygu notlarınızı gözden geçirebilirsiniz.<br>
+            Bir zaman tünelinde yolculuk tazeleyin!
+        </p>
+    </div>
+
+    <div class="main-content">
+        <div class="calendar-container">
+            <div class="calendar-header">
+                <button class="nav-btn" onclick="changeMonth(-1)">‹</button>
+                <div class="month-year" id="monthYear"></div>
+                <button class="nav-btn" onclick="changeMonth(1)">›</button>
+            </div>
+
+            <div class="calendar-grid" id="calendar"></div>
+        </div>
+
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-empty">
+                <div class="sidebar-empty-icon">📅</div>
+                <p>Takvimden bir gün seçerek<br>o günkü TaDaa'larınızı görüntüleyin</p>
+            </div>
+        </div>
+    </div>
+</div>
